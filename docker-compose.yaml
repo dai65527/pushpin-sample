@@ -1,0 +1,15 @@
+services:
+  pushpin:
+    image: fanout/pushpin
+    ports:
+      - "7999:7999"
+      - "5561:5561"
+    volumes:
+      - ./pushpin/routes:/etc/pushpin/routes
+  server:
+    image: cosmtrek/air:v1.60.0
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
